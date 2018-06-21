@@ -1,6 +1,5 @@
 <template>
   <div class="about">
-    <button @click="getAllDiary">获取日记</button>
 
     <timeline>
       <div v-for="item in dataList">
@@ -24,6 +23,9 @@
                 dataList: []
             }
         },
+      mounted(){
+          this.getAllDiary()
+      },
         methods: {
             update: _.debounce(function (e) {
                 this.content = e.target.value
@@ -51,3 +53,9 @@
         }
     }
 </script>
+<style>
+  .about {
+    width: 70%;
+    margin: auto;
+  }
+</style>

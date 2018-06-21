@@ -6,16 +6,20 @@ import List from './views/List.vue'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'write',
-      component: Write
-    },
-    {
-      path: '/list',
-      name: 'list',
-      component: List
-    }
-  ]
+    routes: [
+        {
+            path: '/',
+            name: 'index',
+            component: Write
+        }, {
+            path: '/write',
+            name: 'write',
+            component: Write
+        },
+        {
+            path: '/list',
+            name: 'list',
+            component: List
+        }
+    ]
 })

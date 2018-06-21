@@ -1,16 +1,19 @@
 <template>
     <div class="write">
-        <el-form ref="form" :model="form" label-width="80px">
+        <el-form label-width="80px">
             <el-row>
                 <el-col :span="6">
                     <el-form-item label="天气">
                         <el-input v-model="weather"></el-input>
                     </el-form-item>
                 </el-col>
+                <el-col :span="6">
+                    <el-button type="primary" @click="addDiary">提交</el-button>
+                </el-col>
             </el-row>
 
         </el-form>
-        <button @click="addDiary">提交</button>
+
         <div class="editor">
             <textarea class="textarea" :value="content" @input="update"></textarea>
             <div v-html="compiledMarkdown"></div>
@@ -48,23 +51,12 @@
                     weather
                 })
 
-                console.log(data)
-            },
-            getW(){
-                // const UID = "U785B76FC9"; // 测试用 用户ID，请更换成您自己的用户ID
-                // const KEY = "4r9bergjetiv1tsd"; // 测试用 key，请更换成您自己的 Key
-                // var LOCATION = 'Qingdao'; // 除拼音外，还可以使用 v3 id、汉语等形式
-                //
-                // var Api = require('./lib/api.js')
-                // var argv = require('optimist').default('l', LOCATION).argv;
-                //
-                //
-                // var api = new Api(UID, KEY);
-                // api.getWeatherNow(argv.l).then(function(data) {
-                //     console.log(JSON.stringify(data, null, 4));
-                // }).catch(function(err) {
-                //     console.log(err.error.status);
-                // });
+                if(data.code == 0){
+                    this.$alert('提交成功', '提示', {
+                        confirmButtonText: '确定',
+                    });
+                }
+
             }
         }
     }
@@ -76,7 +68,7 @@
     .textarea, .editor div {
         display: inline-block;
         width: 49%;
-        height: 50vw;
+        height: 40vw;
         vertical-align: top;
         box-sizing: border-box;
         padding: 0 20px;
@@ -96,5 +88,10 @@
 
     code {
         color: #f66;
+    }
+
+    .write {
+        width: 70%;
+        margin: auto;
     }
 </style>
