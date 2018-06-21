@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3000'
+const baseUrl = 'http://sh.jskou.com/api'
 const addDiary = (data) => {
     const url = `${baseUrl}/addDiary`
     return axios.post(url, data)
